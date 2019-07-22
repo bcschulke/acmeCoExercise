@@ -124,7 +124,7 @@
                                                         <p class="float-left">{{order.orderNumber}}</p>
                                                         <div>
                                                             <span class="float-right">{{order.workAmount | currency}}</span><br>
-                                                            <small class="float-right text-muted">{{order.createdDate}}</small>  
+                                                            <small class="float-right text-muted">{{moment(order.createdDate + ' ' + order.createdTime).fromNow()}}</small>  
                                                         </div>
                                                        
                                                 </li>              
