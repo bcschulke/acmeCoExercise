@@ -1,0 +1,200 @@
+/* Elements */
+html {
+    width:100%;
+}
+
+body {
+    padding-top: 60px;
+    background-color: #f0f4f8;
+    font-size: 0.8rem;
+}
+
+h6 {
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: #102A43;
+}
+
+th {
+    cursor: pointer;
+}
+/* Class Styling */
+.block-style {
+    padding: 15px;
+    margin-left: 0;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dkblue {
+    color: #102A43;
+}
+
+.bg-lgrey {
+ background-color: #f0f4f8;
+}
+
+.green-button {
+    background-color: #147d64;
+    border-radius: 25px;
+    color: white;
+}
+
+.green-anchor {
+    font-size: 1rem;
+    color: #147d64;
+    font-weight: 500;
+}
+/* Navbar */
+.navbar {
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-weight: 500;
+}
+.navbar a:hover {
+    opacity: 0.9;
+}
+.navbar .dropdown-menu-right { 
+    color: #102A43;
+    right: 6px; 
+    left: auto; 
+    padding: 10px;
+}
+
+.dropdown-menu-right h6, small { 
+    margin: 0;
+    padding: 0;
+}
+
+a.dropdown-item {
+    font-size: 0.8rem;
+    margin: 0;
+    padding-left: 0;
+}
+
+a.btn.menu-button {
+    color: #199473;
+    border-radius: 25px;
+    border: 1px solid #199473;
+}
+
+
+/* Sidebar */
+.nav-pills .nav-link.active{
+    background-color: #D9E2EC;
+    border-radius: 25px;
+    color: #102A43;
+}
+
+/* Stats*/
+#v-pills-home #statistics {
+    text-transform: uppercase; 
+    color: white;
+    min-height: 110px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+    background: #014d40;
+    background: -webkit-linear-gradient(to right, #014d40, #147d64);
+    background: linear-gradient(to right, #014d40, #147d64); 
+}
+#v-pills-home #map {
+    height: 110px;
+    
+}
+
+iframe {
+    height: inherit;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.PoT {
+    background-color: white;
+    height: 100%;
+    padding: 5px 7px;
+}
+
+.PoT:hover {
+    background-color: #f0f4f8;
+    transition: 0.1s;
+
+}
+
+/* Order History */
+  #content #orderHistory {
+    padding: 0px;
+  }
+
+  #orderHistory #orderHeading {
+      padding: 10px;
+  }
+  #orderHistory tr {
+      border-bottom: 1px solid #D9E2EC;
+  }
+
+  #orderHistory td, th {
+      padding: 10px 10px;
+  }
+
+  .inProcess {
+      background-color: #9FB3C8;
+      border-radius: 25px;
+      padding: 4px;
+      font-weight: 500;
+      color: #243B53;
+  }
+
+  .onHold {
+    background-color: #FFEEEE;
+    border-radius: 25px;
+    padding: 4px;
+    font-weight: 500;
+    color: #911111;
+  }
+
+  .closed {
+    background-color: #f0f4f8;
+    border-radius: 25px;
+    padding: 4px;
+    font-weight: 500;
+    color: #BCCCDC;
+  }
+
+  #orderHistory tr:hover {
+    background-color: #f0f4f8;
+    transition: 0.1s;
+}
+
+/* Toaster Alert */
+#alertBanner {
+    max-width: 500px;
+    min-width: 340px;
+    height: auto;
+    position: fixed;
+    bottom: 30px;
+    left: 30%;
+    right: 30%;
+    background-color: #EAE2F8;
+    color: #421987;
+    border-left: 5px solid #421987;
+
+}
+
+#warningIcon {
+    font-size: 2rem;
+    float: left;
+    margin: 5px;
+    padding-right: 5px;
+}
+
+

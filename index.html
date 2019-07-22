@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="acmeApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acme Co. Dashboard</title>
+    
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <!-- OpenLayers CSS link -->
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css"> -->
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+
+     <!-- Angular -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+</head>
+<body>
+    <nav class="navbar fixed-top text-dark bg-lgrey">
+        <a class="navbar-brand" href="#"><i class="fas fa-meteor"></i> ACME Co.</span></a>
+        <div class="text-dark">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tooltip" data-placement="bottom" title="Notifications"><i class="fas fa-bell"></i></a> 
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right block-style" aria-labelledby="navbarDropdown">
+                    <h6>Benjamin Schulke</h6>
+                    <small class="text-muted">benjamin.schulke@gmail.com</small>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-cog icons"></i> Settings</a>
+                    <a class="dropdown-item pb-3" href="#"><i class="far fa-user-circle"></i> Profile</a>
+                    <a class="btn menu-button w-100" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>    
+    </nav>
+    <div class="container-fluid">
+    <a data-toggle="collapse" data-target="#sidebar"><i class="fas fa-ellipsis-h"></i></a>
+
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-12 col-md-2 collapse show" id="sidebar">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">                    
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home icons"></i> Home</a>
+                    <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-tag icons"></i> Orders</a>
+                    <a class="nav-link" id="v-pills-financials-tab" data-toggle="pill" href="#v-pills-financials" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-chart-line icons"></i> Financials</a>
+                    <a class="nav-link" id="v-pills-reports-tab" data-toggle="pill" href="#v-pills-reports" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-folder-open icons"></i> Reports</a>
+                    <a id="settings" class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cog icons"></i> Settings</a>
+                </div>
+            </div>  
+            <div class="col" id="sidebar-content">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Statistics Div -->
+                                <div class="col-lg-6 h-100 mb-3 px-2">
+                                    <div class="justify-content-between d-inline-flex text-lg-center" id="statistics">
+                                        <div>
+                                            <h6>Projects</h6>
+                                            <h4>42</h4>
+                                        </div>
+                                        <div>
+                                            <h6>Revenue</h6>
+                                            <h4>$1,000,000</h4>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-truncate">Percent Variance</h6>
+                                            <h4>37%</h4>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <!-- Google Maps Div -->
+                                <div class="col-lg-6 mb-3 px-2">
+                                    <div class="map" id="map">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14910.745145612509!2d-156.46478479990796!3d20.884691300055692!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1563648201106!5m2!1sen!2sus" width="100%" frameborder="0" style="border:0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                            <div id="content" class="row">
+                                <div class="col-lg-3 px-2">
+                                    <div class="bg-white mb-3 clearfix block-style" id="filter">
+                                        <form>
+                                            <h6 class="dkblue">Filter</h6>
+                                            <div class="form-group">
+                                                <span id="searchTitle" class="form-text text-muted">Search</span>
+                                                <input type="text" ng-model="search" class="form-control d-inline-block bg-lgrey" id="filterSearch" aria-describedby="searchTitle">
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="check1">
+                                                <label class="form-check-label" for="check1">Checkbox One</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="check2">
+                                                <label class="form-check-label" for="check1">Checkbox Two</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input type="checkbox" class="form-check-input" id="check3">
+                                                <label class="form-check-label" for="check1">Checkbox Three</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-small green-button float-right">Apply</button>
+                                        </form>  
+                                    </div>
+                                    <!-- Pending Orders Section -->
+                                    <div id="pendingOrders" class="bg-white mb-3 block-style">
+                                        <!-- heading -->
+                                        <div class="clearfix mb-2">
+                                            <h6 class="float-left mb-0 dkblue">Pending Orders</h6>                    
+                                            <a class="float-right green-anchor" href="#" data-toggle="modal" data-target="#pendingOrderTabsModal">View All</a>                             
+                                        </div>
+                                        <!-- Pending Order Divs -->
+                                        <div>
+                                            <ul id="pendingOrderTabs" class="pl-0" ng-controller="appController">
+                                                <li class="PoT clearfix" ng-repeat="order in orderHistory | orderBy: ['-status', '-createdDate'] | filter: search | limitTo: 3">                                              
+                                                        <p class="float-left">{{order.orderNumber}}</p>
+                                                        <div>
+                                                            <span class="float-right">{{order.workAmount | currency}}</span><br>
+                                                            <small class="float-right text-muted">{{order.createdDate}}</small>  
+                                                        </div>
+                                                       
+                                                </li>              
+                                            </ul>                   
+                                        </div>                             
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 px-2">
+                                    <div class="bg-white block-style" id="orderHistory">
+                                        <div class="clearfix mb-2" id="orderHeading">
+                                            <h6 class="float-left mb-0 dkblue">Order History</h6>                    
+                                            <a class="float-right green-anchor" href="#" data-toggle="modal" data-target="#orderHistoryModal">View All</a>                                    
+                                        </div>
+                                        <table class="w-100 justify-content-between mb-3" ng-controller="appController">
+                                            <tr class="text-muted bg-lgrey" id="tableHeader">
+                                                <th ng-click="sortOrder = 'orderNumber'">Order Number</th>
+                                                <th ng-click="sortOrder = '-createdDate'">Created</th>
+                                                <th ng-click="sortOrder = '-workAmount'">Total Work Amount</th>
+                                                <th ng-click="sortOrder = 'product'">Product</th>
+                                                <th ng-click="sortOrder = '-status'">Status</th>
+                                            </tr>
+                                            <tr ng-repeat="order in orderHistory | orderBy: '-createdDate' | orderBy: sortOrder | filter: search | limitTo: 11" ng-hide="order.status == 'Pending'">
+                                                <td>{{order.orderNumber}}</td>
+                                                <td>{{order.createdDate}}</td>
+                                                <td>{{order.workAmount | currency}}</td>
+                                                <td>{{order.product}}</td>
+                                                <td><span ng-class="{'inProcess': order.status === 'In Process', 'onHold': order.status === 'On Hold', 'closed': order.status === 'Closed'}">{{order.status}}</span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <h2>Orders page</h2>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-financials" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <h2>Financials Page</h2>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-reports" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <h2>Reports page</h2>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <h2>Settings Page</h2>
+                    </div>
+                </div>
+            </div>  
+        </div> 
+        <div id="alertBanner" class="alert alert-dismissible fade show block-style" role="alert">
+                <i id="warningIcon" class="fas fa-exclamation-triangle"></i>
+            <strong>Notification!</strong><br>
+            Please continue to finish the process.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    
+<!-- Modals -->
+    <!-- Modal for Pending-->
+    <div class="modal fade" id="pendingOrderTabsModal" tabindex="-1" role="dialog" aria-labelledby="pendingModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pendingModalTitle">Pending Orders</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <ul id="pendingOrderTabs" class="pl-0" ng-controller="appController">
+                            <li class="PoT clearfix" ng-repeat="order in orderHistory | orderBy: '-createdDate'" ng-show="order.status == 'Pending'">                                              
+                                <p class="float-left">{{order.orderNumber}}</p>
+                                <div>
+                                    <span class="float-right">{{order.workAmount | currency}}</span><br>
+                                    <small class="float-right text-muted">{{order.createdDate}}</small>  
+                                </div>   
+                            </li>              
+                        </ul>                
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Modal for Order History-->
+    <div class="modal fade" id="orderHistoryModal" tabindex="-1" role="dialog" aria-labelledby="orderHistoryModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderHistoryModalTitle">Pending Orders</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="w-100 justify-content-between mb-3" ng-controller="appController">
+                            <tr class="text-muted bg-lgrey" id="tableHeader">
+                                <th ng-click="sortOrder = 'orderNumber'">Order Number</th>
+                                <th ng-click="sortOrder = '-createdDate'">Created</th>
+                                <th ng-click="sortOrder = '-workAmount'">Total Work Amount</th>
+                                <th ng-click="sortOrder = 'product'">Product</th>
+                                <th ng-click="sortOrder = '-status'">Status</th>
+                            </tr>
+                            <tr ng-repeat="order in orderHistory | orderBy: '-createdDate' | orderBy: sortOrder">
+                                <td class="pb-3">{{order.orderNumber}}</td>
+                                <td class="pb-3">{{order.createdDate}}</td>
+                                <td class="pb-3">{{order.workAmount | currency}}</td>
+                                <td class="pb-3">{{order.product}}</td>
+                                <td class="pb-3"><span class="text-truncate" ng-class="{'inProcess': order.status === 'In Process', 'onHold': order.status === 'On Hold', 'closed': order.status === 'Closed'}">{{order.status}}</span></td>
+                            </tr>
+                        </table>                         
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <!-- scripts -->
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/acd8a189f4.js"></script>
+   
+   <!-- Moment.js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+   <!-- Local -->
+   <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+</html>
