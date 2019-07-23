@@ -218,7 +218,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="orderHistoryModalTitle">Pending Orders</h5>
+                    <h5 class="modal-title" id="orderHistoryModalTitle">Order History</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -238,7 +238,7 @@
                                 <td class="pb-3">{{order.createdDate}}</td>
                                 <td class="pb-3">{{order.workAmount | currency}}</td>
                                 <td class="pb-3">{{order.product}}</td>
-                                <td class="pb-3"><span class="text-truncate" ng-class="{'inProcess': order.status === 'In Process', 'onHold': order.status === 'On Hold', 'closed': order.status === 'Closed'}">{{order.status}}</span></td>
+                                <td class="pb-3"><span class="text-truncate" ng-class="{'inProcess': order.status === 'In Process', 'onHold': order.status === 'On Hold', 'closed': order.status === 'Closed', 'pending': order.status === 'Pending'}">{{order.status}}</span></td>
                             </tr>
                         </table>                         
                     </div>     
